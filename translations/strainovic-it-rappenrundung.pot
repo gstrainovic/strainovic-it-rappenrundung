@@ -1,0 +1,70 @@
+# Copyright (C) 2026 Strainovic IT
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Strainovic IT Rappenrundung 0.4.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/strainovic-it-rappenrundung\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-30T02:44:28+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: strainovic-it-rappenrundung\n"
+
+#. Plugin Name of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "Strainovic IT Rappenrundung"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "https://www.strainovic-it.ch/rappenrundung/"
+msgstr ""
+
+#. Description of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "Rounds the cart and checkout total to 5 Swiss centimes (Rappen). The difference is its own line without VAT in the order and on the invoice."
+msgstr ""
+
+#. Author of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "Strainovic IT"
+msgstr ""
+
+#. Author URI of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "https://www.strainovic-it.ch/"
+msgstr ""
+
+#: src/Connectoren.php:41
+msgid "Donate"
+msgstr ""
+
+#. translators: 1: link to the KLARA shop connector, 2: link to the AbaNinja shop connector
+#: src/Connectoren.php:52
+#, php-format
+msgid "Using KLARA or AbaNinja? My connectors create every order there as an invoice automatically, with the same rounded total: %1$s, %2$s."
+msgstr ""
+
+#: src/Connectoren.php:61
+msgid "KLARA shop connector"
+msgstr ""
+
+#: src/Connectoren.php:62
+msgid "AbaNinja shop connector"
+msgstr ""
+
+#: src/Plugin.php:43
+msgid "Rounding to 5 cents"
+msgstr ""
+
+#: src/Plugin.php:58
+msgid "Rounding line"
+msgstr ""
+
+#: src/Plugin.php:59
+msgid "Label of the rounding line in the cart and in the order. Leave empty to use the default in the language of the site. Only applies when the shop currency is CHF."
+msgstr ""

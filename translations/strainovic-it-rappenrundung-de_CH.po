@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Strainovic IT Rappenrundung 0.4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/strainovic-it-"
+"rappenrundung\n"
+"POT-Creation-Date: 2026-09-30T02:44:28+00:00\n"
+"PO-Revision-Date: 2026-09-27 14:40+0200\n"
+"Last-Translator: Strainovic IT\n"
+"Language-Team: Strainovic IT\n"
+"Language: de_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: strainovic-it-rappenrundung\n"
+
+#. Plugin Name of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "Strainovic IT Rappenrundung"
+msgstr "Strainovic IT Rappenrundung"
+
+#. Plugin URI of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "https://www.strainovic-it.ch/rappenrundung/"
+msgstr "https://www.strainovic-it.ch/rappenrundung/"
+
+#. Description of the plugin
+#: strainovic-it-rappenrundung.php
+msgid ""
+"Rounds the cart and checkout total to 5 Swiss centimes (Rappen). The "
+"difference is its own line without VAT in the order and on the invoice."
+msgstr ""
+"Rundet das Total im Warenkorb und an der Kasse auf 5 Rappen. Die Differenz "
+"steht als eigene Position ohne MWST in der Bestellung und auf der Rechnung."
+
+#. Author of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "Strainovic IT"
+msgstr "Strainovic IT"
+
+#. Author URI of the plugin
+#: strainovic-it-rappenrundung.php
+msgid "https://www.strainovic-it.ch/"
+msgstr "https://www.strainovic-it.ch/"
+
+#: src/Connectoren.php:41
+msgid "Donate"
+msgstr "Spenden"
+
+#. translators: 1: link to the KLARA shop connector, 2: link to the AbaNinja shop connector
+#: src/Connectoren.php:52
+#, php-format
+msgid ""
+"Using KLARA or AbaNinja? My connectors create every order there as an "
+"invoice automatically, with the same rounded total: %1$s, %2$s."
+msgstr ""
+"Sie arbeiten mit KLARA oder AbaNinja? Meine Connectoren legen dort jede "
+"Bestellung automatisch als Rechnung an, mit demselben gerundeten Total: "
+"%1$s, %2$s."
+
+#: src/Connectoren.php:61
+msgid "KLARA shop connector"
+msgstr "KLARA-Shop-Connector"
+
+#: src/Connectoren.php:62
+msgid "AbaNinja shop connector"
+msgstr "AbaNinja-Shop-Connector"
+
+#: src/Plugin.php:43
+msgid "Rounding to 5 cents"
+msgstr "Rundung auf 5 Rappen"
+
+#: src/Plugin.php:58
+msgid "Rounding line"
+msgstr "Rundungsposition"
+
+#: src/Plugin.php:59
+msgid ""
+"Label of the rounding line in the cart and in the order. Leave empty to use "
+"the default in the language of the site. Only applies when the shop currency "
+"is CHF."
+msgstr ""
+"Bezeichnung der Rundungsposition im Warenkorb und in der Bestellung. Leer "
+"lassen, um den Standard in der Sprache der Website zu verwenden. Gilt nur, "
+"wenn die Shop-Währung CHF ist."

@@ -1,0 +1,13 @@
+{
+  "name": "rappenrundung-e2e-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "server": "wp-playground-cli server --port=9400 --blueprint=blueprint.json --mount-dir ../../plugin/strainovic-it-rappenrundung /wordpress/wp-content/plugins/strainovic-it-rappenrundung --mount-dir ./e2e /wordpress/e2e --login",
+    "test": "node checkout-block.mjs"
+  },
+  "devDependencies": {
+    "@wp-playground/cli": "latest",
+    "playwright-core": "latest"
+  }
+}

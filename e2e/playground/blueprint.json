@@ -1,0 +1,11 @@
+{
+  "landingPage": "/",
+  "login": true,
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "steps": [
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" }, "options": { "activate": true } },
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "plugin-check" }, "options": { "activate": true } },
+    { "step": "activatePlugin", "pluginPath": "strainovic-it-rappenrundung/strainovic-it-rappenrundung.php" },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; require '/wordpress/e2e/setup.php';" }
+  ]
+}
