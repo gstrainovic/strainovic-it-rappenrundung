@@ -5,7 +5,7 @@ namespace StrainovicIT\Rappenrundung;
 
 final class Plugin
 {
-    public const VERSION = '0.4.3';
+    public const VERSION = '0.4.4';
     public const OPTION = 'rappenrundung_bezeichnung';
 
     /** Standardwerte früherer Versionen; stehen sie in der Datenbank, gilt der übersetzte Standard. */
@@ -27,6 +27,7 @@ final class Plugin
         self::$gestartet = true;
         (new Warenkorb('get_woocommerce_currency', [self::class, 'bezeichnung']))->registrieren();
         (new Reihenfolge())->registrieren();
+        (new Summenzeile())->registrieren();
         add_filter('woocommerce_general_settings', [self::class, 'einstellungen']);
         add_filter('plugin_row_meta', static fn (array $links, string $plugin): array => Connectoren::zeilenLinks($links, $plugin, $datei), 10, 2);
     }

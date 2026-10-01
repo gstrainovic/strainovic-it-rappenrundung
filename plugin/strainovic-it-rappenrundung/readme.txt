@@ -5,7 +5,7 @@ Tags: woocommerce, switzerland, chf, rounding, checkout
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.4.3
+Stable tag: 0.4.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,13 +55,16 @@ In the language of the site, as soon as the translation for it is available on t
 
 = Where does the rounding line appear? =
 
-In the cart and checkout next to the other fees. In order emails, on the thank-you page, in My Account and in invoice plugins that use the WooCommerce order totals it comes directly before the total, after the VAT.
+Directly before the total, after the VAT: in the classic cart and checkout, in order emails, on the thank-you page, in My Account and in invoice plugins that use the WooCommerce order totals. In the cart and checkout blocks WooCommerce sets the order itself and shows the line next to the other fees.
 
 = I already use a rounding snippet. Do I need to remove it? =
 
 It is better to remove it, but it does no harm. Snippets on the filter woocommerce_calculated_total only round the total shown in the cart; the block checkout creates the order without them. The plugin calculates the rounding from the order lines, so the order is rounded either way.
 
 == Changelog ==
+
+= 0.4.4 =
+* Classic cart and checkout: the rounding line now comes directly before the total, after the VAT, as in the order and on the invoice.
 
 = 0.4.3 =
 * Donation link on the plugins page and on the plugin page in the directory.

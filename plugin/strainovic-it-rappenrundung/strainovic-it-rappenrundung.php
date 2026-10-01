@@ -3,7 +3,7 @@
  * Plugin Name:       Strainovic IT Rappenrundung
  * Plugin URI:        https://www.strainovic-it.ch/rappenrundung/
  * Description:       Rounds the cart and checkout total to 5 Swiss centimes (Rappen). The difference is its own line without VAT in the order and on the invoice.
- * Version:           0.4.3
+ * Version:           0.4.4
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce

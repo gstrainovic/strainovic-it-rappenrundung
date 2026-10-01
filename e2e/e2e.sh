@@ -120,6 +120,34 @@ wp site switch-language de_CH >/dev/null
 # klassischer Warenkorb (PHP) und andere Währung
 R=$(wp eval "WC()->frontend_includes(); WC()->session = new WC_Session_Handler(); WC()->session->init(); WC()->customer = new WC_Customer(0, true); WC()->cart = new WC_Cart(); WC()->cart->add_to_cart($A, 1); WC()->cart->calculate_totals(); echo WC()->cart->get_total('edit');")
 check "klassischer Warenkorb: $R" "$([ "$R" = "9.95" ] && echo 1 || echo 0)"
+
+# Reihenfolge im klassischen Warenkorb und in der klassischen Kasse, Preise ohne MWST: Rundung nach der MWST, direkt vor dem Total
+wp option update woocommerce_prices_include_tax no >/dev/null
+wp option update woocommerce_tax_display_cart excl >/dev/null
+O=$(wp eval-file - $A <<'PHP'
+<?php
+WC()->frontend_includes();
+WC()->session = new WC_Session_Handler(); WC()->session->init();
+WC()->customer = new WC_Customer(0, true); WC()->customer->set_billing_country('CH'); WC()->customer->set_shipping_country('CH');
+WC()->cart = new WC_Cart(); WC()->cart->add_to_cart((int) $args[0], 1); WC()->cart->calculate_totals();
+$pruefe = static function (string $html): array {
+    $rundung = strpos($html, 'Rundung auf 5 Rappen');
+    $mwst = strpos($html, 'tax-');
+    $total = strpos($html, 'order-total');
+    return ['zeilen' => preg_match_all('~<tr class="fee">~', $html), 'mwst' => $mwst !== false,
+        'reihenfolge' => $rundung !== false && $mwst !== false && $total !== false && $mwst < $rundung && $rundung < $total];
+};
+ob_start(); woocommerce_cart_totals(); $korb = ob_get_clean();
+ob_start(); wc_get_template('checkout/review-order.php', ['checkout' => WC()->checkout()]); $kasse = ob_get_clean();
+echo json_encode(['korb' => $pruefe($korb), 'kasse' => $pruefe($kasse), 'total' => (float) WC()->cart->get_total('edit'),
+    'gebuehren' => array_keys(WC()->cart->get_fees()), 'gebuehr' => (float) (WC()->cart->get_fees()['rappenrundung']->total ?? 0)]);
+PHP
+)
+wp option update woocommerce_prices_include_tax yes >/dev/null
+wp option update woocommerce_tax_display_cart incl >/dev/null
+check "klassischer Warenkorb: Rundung einmal, nach der MWST, vor dem Total: $(jq -c .korb <<<"$O")" "$(wahr "$(jq '.korb.zeilen == 1 and .korb.mwst and .korb.reihenfolge' <<<"$O")")"
+check "klassische Kasse: Rundung einmal, nach der MWST, vor dem Total: $(jq -c .kasse <<<"$O")" "$(wahr "$(jq '.kasse.zeilen == 1 and .kasse.mwst and .kasse.reihenfolge' <<<"$O")")"
+check "nach der Ausgabe liegt die Rundung wieder im Warenkorb, Total gerundet: $(jq -c '{total, gebuehren, gebuehr}' <<<"$O")" "$(wahr "$(jq '.gebuehren == ["rappenrundung"] and .gebuehr != 0 and ((.total * 100 | round) % 5 == 0)' <<<"$O")")"
 wp option update woocommerce_currency EUR >/dev/null
 warenkorb $A 1
 check "EUR: keine Rundung ($(jq -r .totals.total_price <<<"$W"))" "$(wahr "$(jq '(.fees | length) == 0 and .totals.total_price == "997"' <<<"$W")")"

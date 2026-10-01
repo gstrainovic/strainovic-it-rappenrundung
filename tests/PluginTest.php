@@ -36,6 +36,8 @@ final class PluginTest extends TestCase
         \Brain\Monkey\Actions\expectAdded('woocommerce_cart_calculate_fees')->once();
         \Brain\Monkey\Actions\expectAdded('woocommerce_checkout_create_order_fee_item')->once();
         \Brain\Monkey\Filters\expectAdded('woocommerce_get_order_item_totals')->once();
+        \Brain\Monkey\Actions\expectAdded('woocommerce_cart_totals_before_order_total')->once();
+        \Brain\Monkey\Actions\expectAdded('woocommerce_review_order_before_order_total')->once();
 
         Plugin::starten('strainovic-it-rappenrundung/strainovic-it-rappenrundung.php');
         Plugin::starten('rappenrundung/rappenrundung.php');
